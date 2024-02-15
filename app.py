@@ -63,12 +63,7 @@ def upload():
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
     
-    temp_path = r"static\uploads\file.jpg"  # Specify a path to save the uploaded file temporarily
-    file.save(temp_path)
-    
-    # # Read the image bytes
-    with open(temp_path, 'rb') as file:
-        bytes_data = file.read()
+    bytes_data = file.read()
 
     # Compress the image
     compressed_bytes = compress_image(bytes_data, quality=40)
