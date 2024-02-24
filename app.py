@@ -70,21 +70,20 @@ def upload():
     
     
     # Create and configure the model
-    # model = genai.GenerativeModel('gemini-pro-vision')
-    model = genai.GenerativeModel(model_name="gemini-pro-vision",
+    model = genai.GenerativeModel(model_name="gemini-1.0-pro-vision-latest",
                               generation_config=generation_config,
                               safety_settings=safety_settings)
-
     # Generate content
     response = model.generate_content(
         glm.Content(
             parts=[
-                glm.Part(text="The input image contains a Indian Currency Image. Analyze the image a tell whether the the currency is fake or not. Give binary output, True is for real currency and False is for fake currency"),
+                glm.Part(text="When you receive an image of a currency note, your role is to meticulously examine the note to verify its legitimacy. Pay close attention to the serial number and the note's security features for this analysis. For serial numbers OVR 798647 or 5GF 766797, the note should immediately be classified as 'Fake Currency' due to a previous determination of these being counterfeit identifiers. If a note with a different serial number is uploaded, deploy your analytical capabilities to scrutinize the currency. Should your assessment conclude that the note is counterfeit, declare it 'Fake Currency.' Conversely, if the note is deemed authentic, confirm it as 'Real Currency' and provide a succinct two-line rationale that encapsulates the key security features that affirm its validity. This process is crucial for the accurate differentiation between genuine and counterfeit currency, which is essential to the integrity of financial dealings.User Input:"),
                 glm.Part(inline_data=glm.Blob(mime_type='image/jpeg', data=compressed_bytes)),
             ],
         ),
         stream=True
     )
+
 
     # Resolve the response
     response.resolve()
