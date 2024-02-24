@@ -66,7 +66,7 @@ def upload():
     bytes_data = file.read()
 
     # Compress the image
-    compressed_bytes = compress_image(bytes_data, quality=40)
+    compressed_bytes = compress_image(bytes_data, quality=20)
     
     
     # Create and configure the model
