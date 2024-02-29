@@ -33,7 +33,7 @@ safety_settings = [
 ]
 
 
-API_KEY = 'AIzaSyAnBGGRvbIWM6DYkEIvXGxqWMlIRCZLB6A'
+API_KEY = ''
 genai.configure(api_key=API_KEY)
 
 def compress_image(image_bytes, quality=20):
